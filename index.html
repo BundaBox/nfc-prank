@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Ошибка загрузки</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #555;
+      user-select: none;
+      text-align: center;
+    }
+    #message {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .button {
+      margin: 5px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: #007aff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      outline: none;
+    }
+    .secondary {
+      background-color: #f0f0f0;
+      color: #007aff;
+    }
+    #image {
+      display: none;
+      max-width: 90%;
+      max-height: 80%;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+<div id="overlay"></div>
+
+<div id="content">
+  <div id="message">Не удалось открыть страницу, потому что сервер перестал отвечать.</div>
+  <button class="button" onclick="location.reload()">Перезагрузить страницу</button>
+  <button class="button secondary">Подробнее</button>
+</div>
+
+<img id="image" src="maxresdefault.jpg" alt="Фотка">
+
+<audio id="sound">
+  <source src="stoni.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const img = document.getElementById('image');
+  const audio = document.getElementById('sound');
+
+  overlay.addEventListener('click', () => {
+    img.style.display = 'block';
+    audio.play();
+  });
+</script>
+
+</body>
+</html>
