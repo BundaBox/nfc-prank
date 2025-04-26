@@ -7,7 +7,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background-color: white;
+      background-color: black;
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -43,12 +43,12 @@
       display: none;
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Чтобы немного оставались края, не растягивать фотку */
+      object-fit: cover; /* Чтобы фотка заполнила весь экран */
       position: absolute;
       top: 0;
       left: 0;
       z-index: 10;
-      background-color: black; /* На всякий случай, чтобы края были черными */
+      background-color: black;
     }
     #overlay {
       position: absolute;
@@ -70,10 +70,12 @@
   <button class="button secondary">Подробнее</button>
 </div>
 
-<img id="image" src="maxresdefault.jpg" alt="Фотка">
+<!-- Твоя новая картинка -->
+<img id="image" src="output-onlinetools.png" alt="Фотка">
 
+<!-- Твой новый звук -->
 <audio id="sound" loop>
-  <source src="stoni.mp3" type="audio/mpeg">
+  <source src="tung.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -87,7 +89,7 @@
 
   function showImage() {
     content.style.display = 'none'; // Убираем текст и кнопки
-    overlay.style.display = 'none'; // Убираем серую зону
+    overlay.style.display = 'none'; // Убираем overlay
     img.style.display = 'block';    // Показываем фотку
     audio.currentTime = 0;
     audio.play();
