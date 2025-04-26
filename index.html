@@ -19,6 +19,7 @@
       color: #555;
       user-select: none;
       text-align: center;
+      position: relative;
     }
     #message {
       margin-bottom: 20px;
@@ -42,11 +43,12 @@
       display: none;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Фотка растягивается красиво */
+      object-fit: contain; /* Чтобы немного оставались края, не растягивать фотку */
       position: absolute;
       top: 0;
       left: 0;
       z-index: 10;
+      background-color: black; /* На всякий случай, чтобы края были черными */
     }
     #overlay {
       position: absolute;
@@ -83,19 +85,17 @@
 
   audio.load();
 
-  overlay.addEventListener('click', () => {
-    img.style.display = 'block';
+  function showImage() {
+    content.style.display = 'none'; // Убираем текст и кнопки
+    overlay.style.display = 'none'; // Убираем серую зону
+    img.style.display = 'block';    // Показываем фотку
     audio.currentTime = 0;
     audio.play();
-  });
+  }
 
-  reloadButton.addEventListener('click', () => {
-    img.style.display = 'block'; // показать фотку
-    audio.currentTime = 0;
-    audio.play(); // включить звук
-    overlay.style.display = 'none'; // убрать затемнение
-    content.style.display = 'none'; // убрать текст и кнопки
-  });
+  overlay.addEventListener('click', showImage);
+
+  reloadButton.addEventListener('click', showImage);
 </script>
 
 </body>
